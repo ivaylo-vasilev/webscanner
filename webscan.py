@@ -10,17 +10,20 @@ parser = argparse.ArgumentParser(prog="webscan", description="web scanner for ex
 parser.add_argument("url", nargs="?", help="specify url")
 parser.add_argument("-a", "--user-agent", metavar="str", default=USER_AGENT, help="specify user agent")
 parser.add_argument("-w", "--wordlist", metavar="txt", help="specify wordlist")
-parser.add_argument("--version", action="version", version="%(prog)s 1.0.1", help="show program version")
+parser.add_argument("--version", action="version", version="%(prog)s 1.0.2", help="show program version")
 args = parser.parse_args()
 
 
 def main():
     if len(sys.argv) == 1:
-        sys.exit(f"usage: {sys.argv[0]} [url] [-w wordlist]")
+        parser.print_help()
+        sys.exit(1)
     
     if not args.url:
+        parser.print_usage()
         sys.exit("error: mising required argument 'url'")
     if not args.wordlist:
+        parser.print_usage()
         sys.exit("error: missing required argument -w <wordlist>")
     elif not os.path.exists(args.wordlist):
         sys.exit(f"error: wordlist file '{args.wordlist}' does not exist")
