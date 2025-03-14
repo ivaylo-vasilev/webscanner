@@ -3,14 +3,14 @@ import sys
 import os
 import requests
 
-USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0"
+USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0"
 
 parser = argparse.ArgumentParser(prog="webscan", description="web scanner for existing (and/or hidden) directories", 
                                  epilog="(c) Ivaylo Vasilev")
 parser.add_argument("url", nargs="?", help="specify url")
 parser.add_argument("-a", "--user-agent", metavar="str", default=USER_AGENT, help="specify user agent")
 parser.add_argument("-w", "--wordlist", metavar="txt", help="specify wordlist")
-parser.add_argument("--version", action="version", version="%(prog)s 1.0.2", help="show program version")
+parser.add_argument("--version", action="version", version="%(prog)s 1.0.3", help="show program version")
 args = parser.parse_args()
 
 
