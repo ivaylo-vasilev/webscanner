@@ -3,7 +3,7 @@ import sys
 import os
 import requests
 
-USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0"
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0"
 
 parser = argparse.ArgumentParser(prog="webscan", description="web scanner for existing (and/or hidden) directories", 
                                  epilog="(c) Ivaylo Vasilev")
