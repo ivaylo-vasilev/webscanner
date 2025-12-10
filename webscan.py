@@ -3,14 +3,14 @@ import sys
 import os
 import requests
 
-USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0"
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0"
 
 parser = argparse.ArgumentParser(prog="webscan", description="web scanner for existing (and/or hidden) directories", 
                                  epilog="(c) Ivaylo Vasilev")
 parser.add_argument("url", nargs="?", help="specify url")
 parser.add_argument("-a", "--user-agent", metavar="str", default=USER_AGENT, help="specify user agent")
-parser.add_argument("-w", "--wordlist", metavar="txt", help="specify wordlist")
-parser.add_argument("--version", action="version", version="%(prog)s 1.0.4", help="show program version")
+parser.add_argument("-w", "--wordlist", metavar="txt", required=True, help="specify wordlist")
+parser.add_argument("--version", action="version", version="%(prog)s 1.1.0", help="show program version")
 args = parser.parse_args()
 
 
@@ -21,12 +21,11 @@ def main():
     
     if not args.url:
         parser.print_usage()
-        sys.exit("error: mising required argument 'url'")
-    if not args.wordlist:
-        parser.print_usage()
-        sys.exit("error: missing required argument -w <wordlist>")
+        print("error: mising required argument 'url'")
+        sys.exit(2)
     elif not os.path.exists(args.wordlist):
-        sys.exit(f"error: wordlist file '{args.wordlist}' does not exist")
+        print(f"error: wordlist file '{args.wordlist}' does not exist")
+        sys.exit(3)
     
     target_url = args.url.rstrip("/")
 
