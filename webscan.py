@@ -1,16 +1,26 @@
+#!/usr/bin/env python3
+
+##############################
+# WebScanner #
+# ========== #
+# Web scanner for existing (and/or hidden) directories
+# Copyright (c)2025 Ivaylo Vasilev. Released under the MIT License; see LICENSE for details.
+# Author: Ivaylo Vasilev
+##############################
+
 import argparse
 import sys
 import os
 import requests
 
-USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0"
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:149.0) Gecko/20100101 Firefox/149.0"
 
 parser = argparse.ArgumentParser(prog="webscan", description="web scanner for existing (and/or hidden) directories", 
                                  epilog="(c) Ivaylo Vasilev")
 parser.add_argument("url", nargs="?", help="specify url")
 parser.add_argument("-a", "--user-agent", metavar="str", default=USER_AGENT, help="specify user agent")
 parser.add_argument("-w", "--wordlist", metavar="txt", required=True, help="specify wordlist")
-parser.add_argument("--version", action="version", version="%(prog)s 1.1.0", help="show program version")
+parser.add_argument("--version", action="version", version="%(prog)s 1.2.0", help="show program version")
 args = parser.parse_args()
 
 
@@ -43,7 +53,7 @@ def main():
                 counter += 1
     
     if counter == 0:
-        print("nothing found.")
+        print("nothing found")
 
 
 def request_dirs(url):
